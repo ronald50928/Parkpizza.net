@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colors */
+  --color-primary: #800000; /* Park Ridge Maroon */
+  --color-secondary: #FFD700; /* Classic Gold */
+  --color-bg: #FDFBF7; /* Stone White */
+  --color-text: #1C1C1C; /* Charcoal Ink */
+  --color-accent: #E6C69B; /* Pizza Crust Beige */
+
+  /* Radius and shadow */
+  --radius-md: 8px;
+  --shadow-soft: 0 2px 6px rgba(0,0,0,0.15);
+
+  /* Spacing tokens */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+}
+
+html, body {
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-md px-4 py-2 font-medium transition-colors;
+  transition: background-color .2s ease, color .2s ease, transform .12s ease;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: var(--shadow-soft);
+  font-family: var(--font-button), system-ui, sans-serif;
+  text-transform: uppercase;
+}
+.btn-primary:hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transform: scale(1.03);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+.btn-secondary:hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(128,0,0,0.40) 0%, rgba(230,198,155,0.35) 100%);
+}
+
+/* Subtle brand wordmark helpers */
+.brand-wordmark {
+  letter-spacing: 0.02em;
+}
+.brand-wordmark .part-park {
+  font-family: var(--font-script), cursive;
+}
+.brand-wordmark .part-pizza {
+  font-family: var(--font-display), serif;
+  letter-spacing: 0.06em;
+}
+
+/* Responsive logo helpers */
+.logo-responsive { height: clamp(36px, 4.5vw, 48px); width: auto; }
+.logo-hero { height: clamp(56px, 8vw, 92px); width: auto; }
+.btn:active { transform: scale(0.98); }
+.btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(255,215,0,.55); }
+
+/* Range slider styling for builder */
+.range { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 9999px; background: #e6e6e6; }
+.range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 9999px; background: var(--color-primary); border: 2px solid white; box-shadow: var(--shadow-soft); cursor: pointer; }
+.range:hover::-webkit-slider-thumb { background: var(--color-secondary); }
+.range::-moz-range-thumb { width: 18px; height: 18px; border-radius: 9999px; background: var(--color-primary); border: 2px solid white; box-shadow: var(--shadow-soft); cursor: pointer; }
+.range::-moz-range-track { height: 6px; border-radius: 9999px; background: #e6e6e6; }
+
+/* Page fade-in */
+html { scroll-behavior: smooth; }
+body { animation: fadeIn .25s ease-out; }
+@keyframes fadeIn { from { opacity: .0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
