@@ -150,8 +150,8 @@ export default function HomePage() {
             </div>
 
             {/* Right Side - Floating Food Images */}
-            <div className="hidden xl:block xl:w-1/3 relative h-[600px]">
-              {/* Cheese Pizza - Top Right */}
+            <div className="hidden lg:block lg:w-1/3 xl:w-1/3 relative h-[500px] lg:h-[600px]">
+              {/* Cheese Pizza - Top Right (Always show on lg+) */}
               <motion.div
                 initial={{ opacity: 0, y: 50, rotate: -10 }}
                 animate={{ 
@@ -164,12 +164,12 @@ export default function HomePage() {
                   y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
                   rotate: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                 }}
-                className="absolute top-0 right-0 w-48 h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+                className="absolute top-0 right-0 w-36 h-36 lg:w-40 lg:h-40 xl:w-48 xl:h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
               >
                 <img src="/cheesepizza.jpeg" alt="Cheese Pizza" className="w-full h-full object-cover" />
               </motion.div>
 
-              {/* Pepperoni Pizza - Middle */}
+              {/* Pepperoni Pizza - Middle (Always show on lg+) */}
               <motion.div
                 initial={{ opacity: 0, x: 50, rotate: 10 }}
                 animate={{ 
@@ -182,12 +182,12 @@ export default function HomePage() {
                   x: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
                   rotate: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
                 }}
-                className="absolute top-32 right-12 w-44 h-44 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+                className="absolute top-28 right-8 lg:top-32 lg:right-10 xl:right-12 w-32 h-32 lg:w-36 lg:h-36 xl:w-44 xl:h-44 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
               >
                 <img src="/pepperonipizza.jpeg" alt="Pepperoni Pizza" className="w-full h-full object-cover" />
               </motion.div>
 
-              {/* Chicken Parm - Bottom Left */}
+              {/* Chicken Parm - Bottom Left (Always show on lg+) */}
               <motion.div
                 initial={{ opacity: 0, y: 50, rotate: -15 }}
                 animate={{ 
@@ -200,12 +200,12 @@ export default function HomePage() {
                   y: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 },
                   rotate: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }
                 }}
-                className="absolute bottom-24 left-0 w-40 h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+                className="absolute bottom-20 left-0 lg:bottom-24 w-32 h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
               >
                 <img src="/chickenparmigiana.jpeg" alt="Chicken Parmigiana" className="w-full h-full object-cover" />
               </motion.div>
 
-              {/* Meatball Sandwich - Bottom Right */}
+              {/* Meatball Sandwich - Bottom Right (Show on xl+ only, would be too crowded on lg) */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ 
@@ -218,12 +218,12 @@ export default function HomePage() {
                   scale: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 },
                   y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
                 }}
-                className="absolute bottom-0 right-8 w-36 h-36 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+                className="hidden xl:block absolute bottom-0 right-8 w-36 h-36 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
               >
                 <img src="/meatballsandwich.jpeg" alt="Meatball Sandwich" className="w-full h-full object-cover" />
               </motion.div>
 
-              {/* Spaghetti - Middle Center */}
+              {/* Spaghetti - Middle Center (Show on xl+ only, would be too crowded on lg) */}
               <motion.div
                 initial={{ opacity: 0, rotate: 5 }}
                 animate={{ 
@@ -238,7 +238,7 @@ export default function HomePage() {
                   y: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 },
                   rotate: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }
                 }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+                className="hidden xl:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
               >
                 <img src="/sapaghettiwithmeatballs.jpeg" alt="Spaghetti with Meatballs" className="w-full h-full object-cover" />
               </motion.div>
