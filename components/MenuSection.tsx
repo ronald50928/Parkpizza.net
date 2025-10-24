@@ -68,14 +68,12 @@ export default function MenuSection() {
         >
           🎨 Build Your Own
         </Link>
-        <a
-          href="https://www.parkpizzaparkridge.com"
-          target="_blank"
-          rel="noreferrer"
+        <Link
+          href="/menu"
           className="btn btn-secondary text-lg px-8 py-4"
         >
           📋 See Full Menu
-        </a>
+        </Link>
       </motion.div>
     </section>
   )
@@ -137,14 +135,12 @@ function PizzaCard({ pizza, index }: { pizza: HousePizza; index: number }) {
               ${pizza.price.small}
             </div>
           </div>
-          <a
-            href="https://www.parkpizzaparkridge.com"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/menu"
             className="btn btn-primary"
           >
-            Order Now
-          </a>
+            View Menu
+          </Link>
         </div>
 
         {/* Dietary Badges */}
