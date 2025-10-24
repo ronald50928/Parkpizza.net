@@ -34,27 +34,29 @@ export default function HomePage() {
           </div>
 
           {/* Main Content Container */}
-          <div className="mx-auto flex w-full max-w-screen-xl items-center gap-12 px-4 py-16 relative z-10">
-            
-            {/* Left Side - Logo (Hidden on mobile, shown on desktop) */}
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="hidden lg:block lg:w-1/3"
-            >
-              <img 
-                src="/newlogo.png" 
-                alt="Park Pizza Logo" 
-                className="w-full max-w-md drop-shadow-2xl"
-                style={{
-                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))'
-                }}
-              />
-            </motion.div>
+          <div className="mx-auto w-full max-w-screen-2xl px-4 py-16 relative z-10">
+            <div className="flex items-center gap-8 lg:gap-12">
+              
+              {/* Left Side - Logo (Hidden on mobile, shown on desktop) */}
+              <motion.div
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="hidden lg:block flex-shrink-0"
+                style={{ width: '280px' }}
+              >
+                <img 
+                  src="/newlogo.png" 
+                  alt="Park Pizza Logo" 
+                  className="w-full drop-shadow-2xl"
+                  style={{
+                    filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))'
+                  }}
+                />
+              </motion.div>
 
-            {/* Center - Text Content */}
-            <div className="flex-1 text-center lg:text-left text-white">
+              {/* Center - Text Content */}
+              <div className="flex-1 text-center lg:text-left text-white min-w-0">
               {/* Mobile Logo */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -147,10 +149,10 @@ export default function HomePage() {
                   <span className="font-semibold">Established 1977</span>
                 </div>
               </motion.div>
-            </div>
+              </div>
 
-            {/* Right Side - Floating Food Images */}
-            <div className="hidden lg:block lg:w-1/3 xl:w-1/3 relative h-[500px] lg:h-[600px]">
+              {/* Right Side - Floating Food Images */}
+              <div className="hidden lg:block flex-shrink-0 relative" style={{ width: '320px', height: '600px' }}>
               {/* Cheese Pizza - Top Right (Always show on lg+) */}
               <motion.div
                 initial={{ opacity: 0, y: 50, rotate: -10 }}
@@ -164,9 +166,16 @@ export default function HomePage() {
                   y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
                   rotate: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                 }}
-                className="absolute top-0 right-0 w-36 h-36 lg:w-40 lg:h-40 xl:w-48 xl:h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+                className="absolute top-0 right-0 w-40 h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white"
+                style={{ willChange: 'transform' }}
               >
-                <img src="/cheesepizza.jpeg" alt="Cheese Pizza" className="w-full h-full object-cover" />
+                <img 
+                  src="/cheesepizza.jpeg" 
+                  alt="Cheese Pizza" 
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  style={{ display: 'block' }}
+                />
               </motion.div>
 
               {/* Pepperoni Pizza - Middle (Always show on lg+) */}
@@ -182,9 +191,16 @@ export default function HomePage() {
                   x: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
                   rotate: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
                 }}
-                className="absolute top-28 right-8 lg:top-32 lg:right-10 xl:right-12 w-32 h-32 lg:w-36 lg:h-36 xl:w-44 xl:h-44 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+                className="absolute top-32 right-8 w-36 h-36 rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white"
+                style={{ willChange: 'transform' }}
               >
-                <img src="/pepperonipizza.jpeg" alt="Pepperoni Pizza" className="w-full h-full object-cover" />
+                <img 
+                  src="/pepperonipizza.jpeg" 
+                  alt="Pepperoni Pizza" 
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  style={{ display: 'block' }}
+                />
               </motion.div>
 
               {/* Chicken Parm - Bottom Left (Always show on lg+) */}
@@ -200,9 +216,16 @@ export default function HomePage() {
                   y: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 },
                   rotate: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }
                 }}
-                className="absolute bottom-20 left-0 lg:bottom-24 w-32 h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+                className="absolute bottom-24 left-0 w-36 h-36 rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white"
+                style={{ willChange: 'transform' }}
               >
-                <img src="/chickenparmigiana.jpeg" alt="Chicken Parmigiana" className="w-full h-full object-cover" />
+                <img 
+                  src="/chickenparmigiana.jpeg" 
+                  alt="Chicken Parmigiana" 
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  style={{ display: 'block' }}
+                />
               </motion.div>
 
               {/* Meatball Sandwich - Bottom Right (Show on xl+ only, would be too crowded on lg) */}
@@ -218,9 +241,16 @@ export default function HomePage() {
                   scale: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 },
                   y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
                 }}
-                className="hidden xl:block absolute bottom-0 right-8 w-36 h-36 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+                className="absolute bottom-0 right-8 w-32 h-32 rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white"
+                style={{ willChange: 'transform' }}
               >
-                <img src="/meatballsandwich.jpeg" alt="Meatball Sandwich" className="w-full h-full object-cover" />
+                <img 
+                  src="/meatballsandwich.jpeg" 
+                  alt="Meatball Sandwich" 
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  style={{ display: 'block' }}
+                />
               </motion.div>
 
               {/* Spaghetti - Middle Center (Show on xl+ only, would be too crowded on lg) */}
@@ -238,10 +268,18 @@ export default function HomePage() {
                   y: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 },
                   rotate: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }
                 }}
-                className="hidden xl:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white"
+                style={{ willChange: 'transform' }}
               >
-                <img src="/sapaghettiwithmeatballs.jpeg" alt="Spaghetti with Meatballs" className="w-full h-full object-cover" />
+                <img 
+                  src="/sapaghettiwithmeatballs.jpeg" 
+                  alt="Spaghetti with Meatballs" 
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  style={{ display: 'block' }}
+                />
               </motion.div>
+              </div>
             </div>
           </div>
 
