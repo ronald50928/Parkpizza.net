@@ -19,123 +19,249 @@ export default function HomePage() {
 
       {/* Add padding to account for fixed navbar */}
       <div className="pt-[64px]">
-        {/* Hero Section - Completely Redesigned */}
+        {/* Hero Section - Redesigned with Logo and Floating Images */}
         <header
-          className="relative isolate min-h-[85vh] flex items-center bg-fixed"
+          className="relative isolate min-h-[90vh] flex items-center overflow-hidden"
           style={{
-            backgroundImage: "linear-gradient(rgba(128,0,0,0.45), rgba(230,198,155,0.40)), url('/hero-bg.jpg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            background: 'linear-gradient(135deg, #800000 0%, #6b0000 50%, #800000 100%)',
           }}
         >
-          <div className="mx-auto flex w-full max-w-screen-xl flex-col items-center gap-8 px-4 py-16 text-center text-white">
-            {/* Logo with animation */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex items-center gap-3"
-            >
-              <BrandLogo variant="hero" />
-            </motion.div>
-
-            {/* Main Headline - Larger and more impactful */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
-              style={{
-                textShadow: '2px 4px 8px rgba(0,0,0,0.3)'
-              }}
-            >
-              Your Slice of <br className="md:hidden" />
-              <span className="text-secondary">Park Ridge</span>
-            </motion.h1>
-
-            {/* Subheadline */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-3xl text-lg md:text-xl lg:text-2xl text-neutral-50 font-body leading-relaxed"
-              style={{
-                textShadow: '1px 2px 4px rgba(0,0,0,0.3)'
-              }}
-            >
-              Hand-tossed tradition meets modern convenience.
-              <br />
-              <span className="text-secondary font-semibold">Build your perfect pizza</span> or order our classics in minutes.
-            </motion.p>
-
-            {/* CTA Buttons - Enhanced */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4"
-            >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link 
-                  href="/build-pizza" 
-                  className="btn btn-primary text-lg px-8 py-4 shadow-2xl"
-                  style={{ boxShadow: '0 10px 30px rgba(128, 0, 0, 0.4)' }}
-                >
-                  🍕 Build Your Pizza
-                </Link>
-              </motion.div>
-              
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <a 
-                  className="btn btn-secondary text-lg px-8 py-4 shadow-xl bg-white/95 backdrop-blur" 
-                  href="https://www.parkpizzaparkridge.com" 
-                  target="_blank" 
-                  rel="noreferrer"
-                >
-                  📦 Order for Delivery
-                </a>
-              </motion.div>
-            </motion.div>
-
-            {/* Trust Indicators */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.8 }}
-              className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm md:text-base"
-            >
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2">
-                <span className="text-2xl">⭐</span>
-                <span className="font-semibold">4.8/5 Rating</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2">
-                <span className="text-2xl">⏱️</span>
-                <span className="font-semibold">~22 min wait</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2">
-                <span className="text-2xl">🏡</span>
-                <span className="font-semibold">Established 1977</span>
-              </div>
-            </motion.div>
-
-            {/* Scroll Indicator */}
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 1,
-                repeat: Infinity,
-                repeatType: 'reverse',
-                repeatDelay: 0.5
-              }}
-              className="absolute bottom-8 left-1/2 -translate-x-1/2"
-            >
-              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </motion.div>
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'radial-gradient(circle at 20% 50%, #e6c69b 0%, transparent 50%), radial-gradient(circle at 80% 80%, #e6c69b 0%, transparent 50%)',
+            }} />
           </div>
+
+          {/* Main Content Container */}
+          <div className="mx-auto flex w-full max-w-screen-xl items-center gap-12 px-4 py-16 relative z-10">
+            
+            {/* Left Side - Logo (Hidden on mobile, shown on desktop) */}
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="hidden lg:block lg:w-1/3"
+            >
+              <img 
+                src="/newlogo.png" 
+                alt="Park Pizza Logo" 
+                className="w-full max-w-md drop-shadow-2xl"
+                style={{
+                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))'
+                }}
+              />
+            </motion.div>
+
+            {/* Center - Text Content */}
+            <div className="flex-1 text-center lg:text-left text-white">
+              {/* Mobile Logo */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="lg:hidden mb-8 flex justify-center"
+              >
+                <img 
+                  src="/newlogo.png" 
+                  alt="Park Pizza Logo" 
+                  className="w-64 drop-shadow-2xl"
+                />
+              </motion.div>
+
+              {/* Main Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+                style={{
+                  textShadow: '2px 4px 8px rgba(0,0,0,0.3)'
+                }}
+              >
+                Your Slice of <br className="md:hidden" />
+                <span className="text-secondary">Park Ridge</span>
+              </motion.h1>
+
+              {/* Subheadline */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="max-w-2xl text-lg md:text-xl lg:text-2xl text-neutral-50 font-body leading-relaxed mb-8 mx-auto lg:mx-0"
+                style={{
+                  textShadow: '1px 2px 4px rgba(0,0,0,0.3)'
+                }}
+              >
+                Hand-tossed tradition meets modern convenience.
+                <br />
+                <span className="text-secondary font-semibold">Build your perfect pizza</span> or order our classics in minutes.
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8"
+              >
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link 
+                    href="/build-pizza" 
+                    className="btn btn-primary text-lg px-8 py-4 shadow-2xl"
+                    style={{ boxShadow: '0 10px 30px rgba(128, 0, 0, 0.4)' }}
+                  >
+                    🍕 Build Your Pizza
+                  </Link>
+                </motion.div>
+                
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <a 
+                    className="btn btn-secondary text-lg px-8 py-4 shadow-xl bg-white/95 backdrop-blur" 
+                    href="https://www.parkpizzaparkridge.com" 
+                    target="_blank" 
+                    rel="noreferrer"
+                  >
+                    📦 Order for Delivery
+                  </a>
+                </motion.div>
+              </motion.div>
+
+              {/* Trust Indicators */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.8 }}
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-sm md:text-base"
+              >
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2">
+                  <span className="text-2xl">⭐</span>
+                  <span className="font-semibold">4.8/5 Rating</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2">
+                  <span className="text-2xl">⏱️</span>
+                  <span className="font-semibold">~22 min wait</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2">
+                  <span className="text-2xl">🏡</span>
+                  <span className="font-semibold">Established 1977</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Side - Floating Food Images */}
+            <div className="hidden xl:block xl:w-1/3 relative h-[600px]">
+              {/* Cheese Pizza - Top Right */}
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotate: -10 }}
+                animate={{ 
+                  opacity: 1, 
+                  y: [0, -20, 0],
+                  rotate: [-10, -5, -10]
+                }}
+                transition={{
+                  opacity: { duration: 0.8, delay: 0.3 },
+                  y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                  rotate: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                }}
+                className="absolute top-0 right-0 w-48 h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+              >
+                <img src="/cheesepizza.jpeg" alt="Cheese Pizza" className="w-full h-full object-cover" />
+              </motion.div>
+
+              {/* Pepperoni Pizza - Middle */}
+              <motion.div
+                initial={{ opacity: 0, x: 50, rotate: 10 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: [0, 15, 0],
+                  rotate: [10, 15, 10]
+                }}
+                transition={{
+                  opacity: { duration: 0.8, delay: 0.5 },
+                  x: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
+                  rotate: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
+                }}
+                className="absolute top-32 right-12 w-44 h-44 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+              >
+                <img src="/pepperonipizza.jpeg" alt="Pepperoni Pizza" className="w-full h-full object-cover" />
+              </motion.div>
+
+              {/* Chicken Parm - Bottom Left */}
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotate: -15 }}
+                animate={{ 
+                  opacity: 1, 
+                  y: [0, -15, 0],
+                  rotate: [-15, -10, -15]
+                }}
+                transition={{
+                  opacity: { duration: 0.8, delay: 0.7 },
+                  y: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 },
+                  rotate: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }
+                }}
+                className="absolute bottom-24 left-0 w-40 h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+              >
+                <img src="/chickenparmigiana.jpeg" alt="Chicken Parmigiana" className="w-full h-full object-cover" />
+              </motion.div>
+
+              {/* Meatball Sandwich - Bottom Right */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ 
+                  opacity: 1, 
+                  scale: [1, 1.05, 1],
+                  y: [0, -10, 0]
+                }}
+                transition={{
+                  opacity: { duration: 0.8, delay: 0.9 },
+                  scale: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 },
+                  y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
+                }}
+                className="absolute bottom-0 right-8 w-36 h-36 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+              >
+                <img src="/meatballsandwich.jpeg" alt="Meatball Sandwich" className="w-full h-full object-cover" />
+              </motion.div>
+
+              {/* Spaghetti - Middle Center */}
+              <motion.div
+                initial={{ opacity: 0, rotate: 5 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: [0, -10, 0],
+                  y: [0, 10, 0],
+                  rotate: [5, 0, 5]
+                }}
+                transition={{
+                  opacity: { duration: 0.8, delay: 1.1 },
+                  x: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 },
+                  y: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 },
+                  rotate: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }
+                }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+              >
+                <img src="/sapaghettiwithmeatballs.jpeg" alt="Spaghetti with Meatballs" className="w-full h-full object-cover" />
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: 1,
+              repeat: Infinity,
+              repeatType: 'reverse',
+              repeatDelay: 0.5
+            }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+          >
+            <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </motion.div>
         </header>
 
         {/* Social Proof Section */}

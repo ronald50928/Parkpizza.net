@@ -18,8 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${body.variable} ${heading.variable} ${subhead.variable} ${button.variable} ${decorative.variable} font-body bg-background text-text`}>
-        <link rel="icon" href="/favicon.png" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/parkpizza-logo.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/parkpizza-logo.png" />
         <PerformanceMonitor />
         {children}
       </body>
