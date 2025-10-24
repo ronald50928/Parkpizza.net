@@ -57,6 +57,10 @@ export default function Navbar() {
             🍕 Build Your Pizza
           </Link>
           
+          <Link href="/menu" className="text-neutral-700 hover:text-primary transition-colors font-body text-sm font-medium">
+            Menu
+          </Link>
+          
           <Link href="/about" className="text-neutral-700 hover:text-primary transition-colors font-body text-sm">
             About
           </Link>
@@ -122,7 +126,15 @@ export default function Navbar() {
 
                 <div className="my-2 border-t border-neutral-200" />
 
-                <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wider px-2 mb-1 font-body">
+                <Link
+                  href="/menu"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="btn btn-secondary w-full justify-start"
+                >
+                  📋 Full Menu
+                </Link>
+
+                <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wider px-2 mb-1 font-body mt-2">
                   Order Online
                 </div>
                 
