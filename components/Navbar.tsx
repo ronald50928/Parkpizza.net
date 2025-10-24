@@ -11,7 +11,6 @@ const OpenStatus = dynamic(() => import('./OpenStatus'), { ssr: false })
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [orderMenuOpen, setOrderMenuOpen] = useState(false)
 
   // Track scroll position for sticky nav effect
   useEffect(() => {
@@ -58,64 +57,9 @@ export default function Navbar() {
             🍕 Build Your Pizza
           </Link>
           
-          {/* Order Platforms Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setOrderMenuOpen(!orderMenuOpen)}
-              onMouseEnter={() => setOrderMenuOpen(true)}
-              onMouseLeave={() => setOrderMenuOpen(false)}
-              className="btn btn-secondary flex items-center gap-1"
-            >
-              Order Now
-              <svg className={`w-4 h-4 transition-transform ${orderMenuOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            
-            <AnimatePresence>
-              {orderMenuOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  onMouseEnter={() => setOrderMenuOpen(true)}
-                  onMouseLeave={() => setOrderMenuOpen(false)}
-                  className="absolute right-0 mt-2 w-48 rounded-lg border border-neutral-200 bg-white shadow-lg"
-                >
-                  <a
-                    href="https://www.parkpizzaparkridge.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="block px-4 py-3 text-sm hover:bg-neutral-50 transition-colors rounded-t-lg font-body"
-                  >
-                    <div className="font-semibold">Slice</div>
-                    <div className="text-xs text-neutral-600">Direct ordering</div>
-                  </a>
-                  <a
-                    href="https://www.ubereats.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="block px-4 py-3 text-sm hover:bg-neutral-50 transition-colors font-body"
-                  >
-                    <div className="font-semibold">Uber Eats</div>
-                    <div className="text-xs text-neutral-600">Fast delivery</div>
-                  </a>
-                  <a
-                    href="https://www.doordash.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="block px-4 py-3 text-sm hover:bg-neutral-50 transition-colors rounded-b-lg font-body"
-                  >
-                    <div className="font-semibold">DoorDash</div>
-                    <div className="text-xs text-neutral-600">Quick pickup</div>
-                  </a>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          <Link href="/about" className="btn btn-secondary">About</Link>
+          <Link href="/about" className="text-neutral-700 hover:text-primary transition-colors font-body text-sm">
+            About
+          </Link>
           
           {/* Phone Number */}
           <a href="tel:2013919393" className="hidden lg:flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary transition-colors font-body">

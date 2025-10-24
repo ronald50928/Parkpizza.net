@@ -1,13 +1,70 @@
+import { FacebookIcon, InstagramIcon, SliceIcon, UberEatsIcon, DoorDashIcon } from './icons/SocialIcons'
+
 export default function Footer() {
   return (
     <footer className="mt-16 w-full border-t border-neutral-200 bg-white">
-      <div className="mx-auto grid max-w-screen-xl grid-cols-1 gap-6 px-4 py-8 sm:grid-cols-3">
+      <div className="mx-auto grid max-w-screen-xl grid-cols-1 gap-8 px-4 py-10 sm:grid-cols-3">
         <div>
-          <h3 className="font-subhead text-lg font-semibold text-primary">Order & Contact</h3>
-          <p className="text-sm text-neutral-700 font-body">Classic flavors. Park Ridge pride.</p>
-          <div className="mt-2 flex flex-wrap gap-2">
-            <a className="btn btn-accent" href="https://www.parkpizzaparkridge.com" target="_blank" rel="noreferrer">Order on Slice</a>
-            <a className="btn bg-neutral-200 text-neutral-800" href="tel:2013919393">Call (201) 391-9393</a>
+          <h3 className="font-subhead text-lg font-semibold text-primary mb-3">Order & Connect</h3>
+          <p className="text-sm text-neutral-700 font-body mb-4">Classic flavors. Park Ridge pride.</p>
+          
+          {/* Order Platforms */}
+          <div className="mb-4">
+            <p className="text-xs font-semibold text-neutral-600 mb-2 uppercase tracking-wide">Order Online</p>
+            <div className="flex items-center gap-3">
+              <a 
+                href="https://www.parkpizzaparkridge.com" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-primary hover:text-secondary transition-colors"
+                aria-label="Order on Slice"
+              >
+                <SliceIcon className="w-8 h-8" />
+              </a>
+              <a 
+                href="https://www.ubereats.com" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-primary hover:text-secondary transition-colors"
+                aria-label="Order on Uber Eats"
+              >
+                <UberEatsIcon className="w-8 h-8" />
+              </a>
+              <a 
+                href="https://www.doordash.com" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-primary hover:text-secondary transition-colors"
+                aria-label="Order on DoorDash"
+              >
+                <DoorDashIcon className="w-8 h-8" />
+              </a>
+            </div>
+          </div>
+
+          {/* Social Media */}
+          <div>
+            <p className="text-xs font-semibold text-neutral-600 mb-2 uppercase tracking-wide">Follow Us</p>
+            <div className="flex items-center gap-3">
+              <a 
+                href="https://www.facebook.com" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-primary hover:text-secondary transition-colors"
+                aria-label="Follow us on Facebook"
+              >
+                <FacebookIcon className="w-7 h-7" />
+              </a>
+              <a 
+                href="https://www.instagram.com" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-primary hover:text-secondary transition-colors"
+                aria-label="Follow us on Instagram"
+              >
+                <InstagramIcon className="w-7 h-7" />
+              </a>
+            </div>
           </div>
         </div>
         <div>
