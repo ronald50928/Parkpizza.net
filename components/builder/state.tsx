@@ -30,8 +30,43 @@ export function BuilderProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<BuilderState>(() => {
     if (typeof window === 'undefined') return defaultState
     try {
-      const saved = localStorage.getItem('pp-builder-v2')
-      if (saved) return JSON.parse(saved)
+      // Try new version first
+      const saved = localStorage.getItem('pp-builder-v3')
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        // Ensure toppingAmounts exists
+        if (!parsed.toppingAmounts) parsed.toppingAmounts = {}
+        return parsed
+      }
+      
+      // Migrate from old version if exists
+      const oldSaved = localStorage.getItem('pp-builder-v2')
+      if (oldSaved) {
+        const oldState = JSON.parse(oldSaved)
+        // Convert old density system to new amount system
+        const toppingAmounts: Partial<Record<Topping, ToppingAmount>> = {}
+        if (oldState.toppingDensity) {
+          Object.entries(oldState.toppingDensity).forEach(([topping, density]) => {
+            if (density === 0) toppingAmounts[topping as Topping] = 'none'
+            else if (density === 1) toppingAmounts[topping as Topping] = 'light'
+            else if (density === 2) toppingAmounts[topping as Topping] = 'regular'
+            else if (density === 3) toppingAmounts[topping as Topping] = 'extra'
+          })
+        }
+        const migrated = {
+          size: oldState.size || 'Medium',
+          crust: oldState.crust || 'Regular',
+          sauce: oldState.sauce || 'Red',
+          cheese: oldState.cheese || 'Mozzarella',
+          toppingAmounts,
+          promo: oldState.promo
+        }
+        // Save migrated version
+        localStorage.setItem('pp-builder-v3', JSON.stringify(migrated))
+        // Clean up old version
+        localStorage.removeItem('pp-builder-v2')
+        return migrated
+      }
     } catch {}
     return defaultState
   })
