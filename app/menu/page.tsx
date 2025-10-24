@@ -123,7 +123,7 @@ export default function MenuPage() {
               🎨 Build Your Pizza
             </Link>
             <a
-              href="https://www.slicelife.com/restaurants/nj/park-ridge/07656/park-pizza-park-ridge/menu"
+              href="https://slicelife.com/restaurants/nj/park-ridge/07656/park-pizza/menu"
               target="_blank"
               rel="noreferrer"
               className="btn btn-secondary text-lg px-8 py-4"

@@ -120,7 +120,7 @@ export default function HomePage() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <a 
                     className="btn btn-secondary text-lg px-8 py-4 shadow-xl bg-white/95 backdrop-blur" 
-                    href="https://www.parkpizzaparkridge.com" 
+                    href="https://slicelife.com/restaurants/nj/park-ridge/07656/park-pizza/menu" 
                     target="_blank" 
                     rel="noreferrer"
                   >

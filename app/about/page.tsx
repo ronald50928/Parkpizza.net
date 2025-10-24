@@ -45,7 +45,7 @@ export default function AboutPage() {
             <p>Order ahead online for pickup or delivery through our official Slice storefront, or stop by our shop in the heart of Park Ridge.</p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <a className="btn btn-primary" href="https://www.parkpizzaparkridge.com" target="_blank" rel="noreferrer">Order on Slice</a>
+              <a className="btn btn-primary" href="https://slicelife.com/restaurants/nj/park-ridge/07656/park-pizza/menu" target="_blank" rel="noreferrer">Order on Slice</a>
               <a className="btn btn-secondary" href="tel:2013919393">Call (201) 391-9393</a>
             </div>
           </div>

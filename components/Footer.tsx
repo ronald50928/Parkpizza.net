@@ -1,4 +1,4 @@
-import { FacebookIcon, InstagramIcon, SliceIcon, UberEatsIcon, DoorDashIcon } from './icons/SocialIcons'
+import { FacebookIcon, InstagramIcon, SliceIcon, UberEatsIcon, DoorDashIcon, GrubHubIcon } from './icons/SocialIcons'
 
 export default function Footer() {
   return (
@@ -11,9 +11,9 @@ export default function Footer() {
           {/* Order Platforms */}
           <div className="mb-4">
             <p className="text-xs font-semibold text-neutral-600 mb-2 uppercase tracking-wide">Order Online</p>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <a 
-                href="https://www.parkpizzaparkridge.com" 
+                href="https://slicelife.com/restaurants/nj/park-ridge/07656/park-pizza/menu" 
                 target="_blank" 
                 rel="noreferrer"
                 className="text-primary hover:text-secondary transition-colors"
@@ -22,7 +22,7 @@ export default function Footer() {
                 <SliceIcon className="w-8 h-8" />
               </a>
               <a 
-                href="https://www.ubereats.com" 
+                href="https://www.ubereats.com/store/park-pizza/dg14TBXHRIqO5uID1ksong?srsltid=AfmBOopwPasFVMYKQy2xG2od7D5Vwsd5prcMJ0tx0febRssHcb7YdXK_" 
                 target="_blank" 
                 rel="noreferrer"
                 className="text-primary hover:text-secondary transition-colors"
@@ -31,13 +31,22 @@ export default function Footer() {
                 <UberEatsIcon className="w-8 h-8" />
               </a>
               <a 
-                href="https://www.doordash.com" 
+                href="https://www.doordash.com/store/park-pizza-park-ridge-142039/197237/?srsltid=AfmBOoqAIpMMc9wNf-JI-BivVfxhmAzJ3CDwQ060E77VRjZpMrjZX3T_" 
                 target="_blank" 
                 rel="noreferrer"
                 className="text-primary hover:text-secondary transition-colors"
                 aria-label="Order on DoorDash"
               >
                 <DoorDashIcon className="w-8 h-8" />
+              </a>
+              <a 
+                href="https://www.grubhub.com/restaurant/park-pizza-85-park-ave-park-ridge/353189" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-primary hover:text-secondary transition-colors"
+                aria-label="Order on GrubHub"
+              >
+                <GrubHubIcon className="w-8 h-8" />
               </a>
             </div>
           </div>
@@ -47,7 +56,7 @@ export default function Footer() {
             <p className="text-xs font-semibold text-neutral-600 mb-2 uppercase tracking-wide">Follow Us</p>
             <div className="flex items-center gap-3">
               <a 
-                href="https://www.facebook.com" 
+                href="https://www.facebook.com/ParkPizzaParkRidgeNJ/about" 
                 target="_blank" 
                 rel="noreferrer"
                 className="text-primary hover:text-secondary transition-colors"
@@ -56,7 +65,7 @@ export default function Footer() {
                 <FacebookIcon className="w-7 h-7" />
               </a>
               <a 
-                href="https://www.instagram.com" 
+                href="https://www.instagram.com/parkpizza_nj/?hl=en" 
                 target="_blank" 
                 rel="noreferrer"
                 className="text-primary hover:text-secondary transition-colors"
