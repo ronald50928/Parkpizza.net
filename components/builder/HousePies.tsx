@@ -3,7 +3,11 @@ import React from 'react'
 import { useBuilder } from './state'
 import type { Topping } from './types'
 
-export default function HousePies() {
+interface HousePiesProps {
+  onPresetSelect?: () => void
+}
+
+export default function HousePies({ onPresetSelect }: HousePiesProps) {
   const { set, setToppingAmount } = useBuilder()
 
   const preset = (name: string) => {
@@ -36,15 +40,24 @@ export default function HousePies() {
         }
       })
     }
+    // Notify parent to collapse sections after preset selection
+    onPresetSelect?.()
   }
 
   return (
     <div className="rounded-lg border border-warmgray/40 bg-white p-4 shadow-sm">
       <h3 className="font-subhead text-primary text-lg font-semibold mb-2">House Pies</h3>
+      <p className="text-sm text-neutral-600 mb-3 font-body">Start with one of our popular pizzas (you can still customize!)</p>
       <div className="flex flex-wrap gap-2">
-        <button className="btn btn-secondary" onClick={() => preset('Margherita')}>Margherita</button>
-        <button className="btn btn-secondary" onClick={() => preset('Park Ridge Special')}>Park Ridge Special</button>
-        <button className="btn btn-secondary" onClick={() => preset('Veggie')}>Veggie</button>
+        <button className="btn btn-secondary" onClick={() => preset('Margherita')}>
+          🍅 Margherita
+        </button>
+        <button className="btn btn-secondary" onClick={() => preset('Park Ridge Special')}>
+          🍕 Park Ridge Special
+        </button>
+        <button className="btn btn-secondary" onClick={() => preset('Veggie')}>
+          🥬 Veggie
+        </button>
       </div>
     </div>
   )

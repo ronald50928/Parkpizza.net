@@ -4,7 +4,6 @@ import { BuilderProvider, useBuilder } from './state'
 import PizzaCanvas from './PizzaCanvas'
 import BuilderStepper from './BuilderStepper'
 import PriceBar from './PriceBar'
-import HousePies from './HousePies'
 import BottomSheet from './BottomSheet'
 import ProgressIndicator from './ProgressIndicator'
 import Toast from '../ui/Toast'
@@ -107,7 +106,6 @@ function BuilderContent() {
             className="sticky top-20 md:top-24"
           >
             <PizzaCanvas />
-            <div className="mt-4"><HousePies /></div>
           </motion.div>
           
           <motion.div

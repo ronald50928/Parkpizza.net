@@ -2,25 +2,53 @@
 import React from 'react'
 import { useBuilder } from './state'
 import { SIZES, CRUSTS, SAUCES, CHEESES, TOPPINGS, TOPPING_AMOUNTS, TOPPING_LABELS, TOPPING_DESCRIPTIONS, type Topping, type ToppingAmount } from './types'
+import HousePies from './HousePies'
 
 export default function BuilderStepper() {
   const { state, set, setToppingAmount } = useBuilder()
-  const [open, setOpen] = React.useState<'size' | 'crust' | 'sauce' | 'cheese' | 'toppings'>('toppings')
+  // All sections expanded by default for easy building
+  const [collapsed, setCollapsed] = React.useState<Set<string>>(new Set())
 
-  const Section = ({ id, title, children }: { id: typeof open; title: string; children: React.ReactNode }) => (
-    <section className="rounded-lg border border-warmgray/40 bg-white p-4 shadow-sm">
-      <header className="mb-3 flex items-center justify-between">
-        <h3 className="font-subhead text-primary text-lg font-semibold">{title}</h3>
-        <button className="text-sm underline decoration-dotted" onClick={() => setOpen(id)}>
-          {open === id ? 'Open' : 'Edit'}
-        </button>
-      </header>
-      {open === id && <div className="space-y-3">{children}</div>}
-    </section>
-  )
+  const toggleSection = (id: string) => {
+    setCollapsed(prev => {
+      const next = new Set(prev)
+      if (next.has(id)) {
+        next.delete(id)
+      } else {
+        next.add(id)
+      }
+      return next
+    })
+  }
+
+  const Section = ({ id, title, children }: { id: string; title: string; children: React.ReactNode }) => {
+    const isCollapsed = collapsed.has(id)
+    return (
+      <section className="rounded-lg border border-warmgray/40 bg-white p-4 shadow-sm">
+        <header className="mb-3 flex items-center justify-between">
+          <h3 className="font-subhead text-primary text-lg font-semibold">{title}</h3>
+          <button 
+            className="text-sm underline decoration-dotted hover:text-primary transition-colors" 
+            onClick={() => toggleSection(id)}
+          >
+            {isCollapsed ? 'Show' : 'Hide'}
+          </button>
+        </header>
+        {!isCollapsed && <div className="space-y-3">{children}</div>}
+      </section>
+    )
+  }
+
+  // Collapse all sections (used when preset is selected)
+  const collapseAll = () => {
+    setCollapsed(new Set(['size', 'crust', 'sauce', 'cheese', 'toppings']))
+  }
 
   return (
     <div className="space-y-4">
+      {/* House Pies at the top */}
+      <HousePies onPresetSelect={collapseAll} />
+      
       <Section id="size" title="Size">
         <div className="flex flex-wrap gap-2">
           {SIZES.map((s) => (
