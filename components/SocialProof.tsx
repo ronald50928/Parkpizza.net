@@ -110,10 +110,10 @@ export default function SocialProof() {
         >
           <div className="mb-2 text-3xl">🏡</div>
           <div className="text-2xl font-bold text-primary font-heading">
-            <AnimatedCounter end={15} suffix="+" />
+            <AnimatedCounter end={1977} />
           </div>
           <div className="text-sm text-neutral-600 font-body">
-            years in Park Ridge
+            Established
           </div>
         </motion.div>
       </div>
