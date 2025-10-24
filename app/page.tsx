@@ -114,7 +114,7 @@ export default function HomePage() {
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2">
                 <span className="text-2xl">🏡</span>
-                <span className="font-semibold">15+ years local</span>
+                <span className="font-semibold">Established 1977</span>
               </div>
             </motion.div>
 
@@ -211,8 +211,8 @@ export default function HomePage() {
                 Park Ridge Proud
               </h3>
               <p className="text-base text-neutral-700 font-body leading-relaxed">
-                Maroon and gold—our hometown colors. We&apos;ve served this community for over 15 years 
-                and we&apos;re honored to be your local favorite.
+                Maroon and gold—our hometown colors. Established in 1977, we&apos;ve been 
+                proudly serving Park Ridge for nearly 50 years as your local favorite.
               </p>
             </motion.div>
           </motion.section>
