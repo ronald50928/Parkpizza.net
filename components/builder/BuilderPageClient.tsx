@@ -60,13 +60,13 @@ function BuilderContent() {
           ...defaults,
           particleCount,
           origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-          colors: ['#800000', '#FFD700', '#E6C69B', '#FFF']
+          colors: ['#800000', '#FFD700', '#7C3AED', '#EC4899', '#FFF']
         })
         confetti({
           ...defaults,
           particleCount,
           origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-          colors: ['#800000', '#FFD700', '#E6C69B', '#FFF']
+          colors: ['#800000', '#FFD700', '#7C3AED', '#EC4899', '#FFF']
         })
       }, 250)
 

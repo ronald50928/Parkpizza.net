@@ -49,7 +49,7 @@ export default function ProgressIndicator() {
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mb-6 rounded-lg border border-primary/20 bg-gradient-to-r from-primary/5 to-secondary/5 p-4"
+      className="mb-6 rounded-lg border border-electric/20 bg-gradient-to-r from-electric/5 via-primary/5 to-electricPink/5 p-4"
     >
       {/* Progress Bar */}
       <div className="mb-2 flex items-center justify-between">
@@ -74,8 +74,8 @@ export default function ProgressIndicator() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className={`h-full rounded-full ${
             isComplete
-              ? 'bg-gradient-to-r from-primary via-secondary to-primary'
-              : 'bg-gradient-to-r from-primary to-primary/70'
+              ? 'bg-gradient-to-r from-electric via-electricPink to-electric'
+              : 'bg-gradient-to-r from-primary via-electric/30 to-primary/70'
           }`}
         />
         

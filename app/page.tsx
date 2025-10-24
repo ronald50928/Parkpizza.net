@@ -223,7 +223,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-20 rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-8 md:p-12 text-center text-white shadow-2xl"
+            className="mt-20 rounded-2xl bg-gradient-to-br from-primary via-electric/20 to-primary/80 p-8 md:p-12 text-center text-white shadow-2xl border border-electric/30"
           >
             <div className="text-6xl mb-4">🎨</div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
@@ -236,7 +236,7 @@ export default function HomePage() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/build-pizza"
-                className="inline-flex items-center gap-2 bg-secondary text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-secondary/90 transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-secondary to-electricAmber text-primary px-8 py-4 rounded-lg font-bold text-lg hover:from-electricAmber hover:to-secondary transition-all shadow-lg"
               >
                 Try the Builder
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

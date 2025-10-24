@@ -89,7 +89,7 @@ export default function Navbar() {
                     rel="noreferrer"
                     className="block px-4 py-3 text-sm hover:bg-neutral-50 transition-colors rounded-t-lg font-body"
                   >
-                    <div className="font-semibold">Slice (Official)</div>
+                    <div className="font-semibold">Slice</div>
                     <div className="text-xs text-neutral-600">Direct ordering</div>
                   </a>
                   <a
@@ -188,7 +188,7 @@ export default function Navbar() {
                   rel="noreferrer"
                   className="btn btn-secondary w-full justify-start"
                 >
-                  Slice (Official)
+                  Slice
                 </a>
                 
                 <a

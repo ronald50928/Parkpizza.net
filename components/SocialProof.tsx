@@ -45,7 +45,7 @@ export default function SocialProof() {
         {/* Rating */}
         <motion.div
           variants={staggerItem}
-          className="flex flex-col items-center rounded-lg border border-warmgray/30 bg-white p-4 shadow-sm"
+          className="flex flex-col items-center rounded-lg border border-electricLight/20 bg-gradient-to-br from-white to-electricLight/5 p-4 shadow-sm"
         >
           <div className="mb-2 flex items-center gap-1 text-2xl">
             {[...Array(5)].map((_, i) => (
@@ -70,7 +70,7 @@ export default function SocialProof() {
         {/* Recent Orders */}
         <motion.div
           variants={staggerItem}
-          className="flex flex-col items-center rounded-lg border border-warmgray/30 bg-white p-4 shadow-sm"
+          className="flex flex-col items-center rounded-lg border border-electricPink/20 bg-gradient-to-br from-white to-electricPink/5 p-4 shadow-sm"
         >
           <div className="mb-2 text-3xl">🔥</div>
           <div className="text-2xl font-bold text-primary font-heading">
