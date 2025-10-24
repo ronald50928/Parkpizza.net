@@ -15,8 +15,8 @@ export default function PizzaCanvas({ className = '' }: Props) {
   useEffect(() => {
     const canvas = canvasRef.current!
     const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1))
-    const sizeCss = canvas.parentElement?.clientWidth || 500
-    const size = Math.min(560, sizeCss)
+    const sizeCss = canvas.parentElement?.clientWidth || 400
+    const size = Math.min(400, sizeCss) // Reduced from 560 to 400
     canvas.width = size * dpr
     canvas.height = size * dpr
     canvas.style.width = `${size}px`
@@ -24,7 +24,9 @@ export default function PizzaCanvas({ className = '' }: Props) {
     const ctx = canvas.getContext('2d')!
     ctx.scale(dpr, dpr)
 
-    const radius = size / 2 - 12
+    // Adjust radius based on pizza size selection
+    const sizeMultiplier = state.size === 'Small' ? 0.75 : state.size === 'Large' ? 0.95 : 0.85
+    const radius = (size / 2 - 12) * sizeMultiplier
 
     // Seed using current selection to keep deterministic positions for share
     const seed = JSON.stringify(state)
@@ -85,9 +87,9 @@ function drawTopping(
   topping: Topping,
   state: any
 ) {
-  const density = state.toppingDensity[topping] ?? 0
-  if (!density) return
-  const count = toppingCountForSize(state.size, topping, density)
+  const amount = state.toppingAmounts[topping] || 'none'
+  if (amount === 'none') return
+  const count = toppingCountForSize(state.size, topping, amount)
   if (count <= 0) return
 
   const points = samplePointsInCircle(rng, radius - 22, count, 22)

@@ -13,14 +13,31 @@ export const TOPPINGS: Topping[] = ['Pepperoni', 'Mushrooms', 'Onions', 'Peppers
 export const BASE_PRICES: Record<Size, number> = { Small: 8, Medium: 10, Large: 12 }
 export const TOPPING_PRICE = 1
 
-export type Density = 0 | 1 | 2 | 3 // none, light, normal, extra
+// Kitchen-friendly topping portions
+export type ToppingAmount = 'none' | 'light' | 'regular' | 'extra'
+
+export const TOPPING_AMOUNTS: ToppingAmount[] = ['none', 'light', 'regular', 'extra']
+
+export const TOPPING_LABELS: Record<ToppingAmount, string> = {
+  none: 'None',
+  light: 'Light',
+  regular: 'Regular',
+  extra: 'Extra'
+}
+
+export const TOPPING_DESCRIPTIONS: Record<ToppingAmount, string> = {
+  none: 'No topping',
+  light: '~Half portion',
+  regular: 'Standard portion',
+  extra: '~Double portion'
+}
 
 export type BuilderState = {
   size: Size
   crust: Crust
   sauce: Sauce
   cheese: Cheese
-  toppingDensity: Partial<Record<Topping, Density>>
+  toppingAmounts: Partial<Record<Topping, ToppingAmount>>
   promo?: string
 }
 
@@ -29,13 +46,14 @@ export const defaultState: BuilderState = {
   crust: 'Regular',
   sauce: 'Red',
   cheese: 'Mozzarella',
-  toppingDensity: {},
+  toppingAmounts: {},
 }
 
-export function densityToMultiplier(d: Density | undefined): number {
-  if (d === 0 || d === undefined) return 0
-  if (d === 1) return 0.5
-  if (d === 2) return 1
-  return 1.4 // extra
+// Convert topping amount to visual multiplier for canvas
+export function toppingAmountToMultiplier(amount: ToppingAmount | undefined): number {
+  if (!amount || amount === 'none') return 0
+  if (amount === 'light') return 0.5
+  if (amount === 'regular') return 1
+  return 1.5 // extra
 }
 

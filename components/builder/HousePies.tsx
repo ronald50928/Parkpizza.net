@@ -1,33 +1,40 @@
 "use client"
 import React from 'react'
 import { useBuilder } from './state'
+import type { Topping } from './types'
 
 export default function HousePies() {
-  const { set, setDensity } = useBuilder()
+  const { set, setToppingAmount } = useBuilder()
 
   const preset = (name: string) => {
     if (name === 'Margherita') {
-      set({ sauce: 'Red', cheese: 'Mozzarella' })
-      setDensity('Pepperoni' as any, 0)
-      setDensity('Mushrooms' as any, 0)
-      setDensity('Onions' as any, 0)
-      setDensity('Peppers' as any, 0)
-      setDensity('Sausage' as any, 0)
-      setDensity('Olives' as any, 0)
+      set({ 
+        sauce: 'Red', 
+        cheese: 'Mozzarella',
+        toppingAmounts: {} // No toppings
+      })
     } else if (name === 'Park Ridge Special') {
-      set({ sauce: 'Red', cheese: 'Mozzarella' })
-      setDensity('Pepperoni' as any, 2)
-      setDensity('Sausage' as any, 1)
-      setDensity('Mushrooms' as any, 1)
-      setDensity('Onions' as any, 1)
+      set({ 
+        sauce: 'Red', 
+        cheese: 'Mozzarella',
+        toppingAmounts: {
+          Pepperoni: 'regular',
+          Sausage: 'light',
+          Mushrooms: 'light',
+          Onions: 'light'
+        }
+      })
     } else if (name === 'Veggie') {
-      set({ sauce: 'Red', cheese: 'Mozzarella' })
-      setDensity('Mushrooms' as any, 2)
-      setDensity('Onions' as any, 2)
-      setDensity('Peppers' as any, 2)
-      setDensity('Olives' as any, 1)
-      setDensity('Pepperoni' as any, 0)
-      setDensity('Sausage' as any, 0)
+      set({ 
+        sauce: 'Red', 
+        cheese: 'Mozzarella',
+        toppingAmounts: {
+          Mushrooms: 'regular',
+          Onions: 'regular',
+          Peppers: 'regular',
+          Olives: 'light'
+        }
+      })
     }
   }
 

@@ -1,10 +1,10 @@
 "use client"
 import React from 'react'
 import { useBuilder } from './state'
-import { SIZES, CRUSTS, SAUCES, CHEESES, TOPPINGS, type Topping } from './types'
+import { SIZES, CRUSTS, SAUCES, CHEESES, TOPPINGS, TOPPING_AMOUNTS, TOPPING_LABELS, TOPPING_DESCRIPTIONS, type Topping, type ToppingAmount } from './types'
 
 export default function BuilderStepper() {
-  const { state, set, setDensity } = useBuilder()
+  const { state, set, setToppingAmount } = useBuilder()
   const [open, setOpen] = React.useState<'size' | 'crust' | 'sauce' | 'cheese' | 'toppings'>('toppings')
 
   const Section = ({ id, title, children }: { id: typeof open; title: string; children: React.ReactNode }) => (
@@ -54,28 +54,36 @@ export default function BuilderStepper() {
         </div>
       </Section>
       <Section id="toppings" title="Toppings">
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3">
           {TOPPINGS.map((t) => {
-            const value = (state.toppingDensity[t] ?? 0) as number
+            const currentAmount = state.toppingAmounts[t] || 'none'
             return (
               <div key={t} className="rounded border border-warmgray/40 p-3">
-                <div className="mb-2 flex items-center justify-between">
-                  <div className="font-medium flex items-center gap-2">
-                    <span className="inline-block h-3.5 w-3.5 rounded-full" style={{backgroundColor: colorFor(t)}} />
-                    {t}
-                  </div>
-                  <div className="text-xs text-neutral-600">density</div>
+                <div className="mb-2 flex items-center gap-2">
+                  <span className="inline-block h-3.5 w-3.5 rounded-full flex-shrink-0" style={{backgroundColor: colorFor(t)}} />
+                  <span className="font-medium flex-1">{t}</span>
                 </div>
-                <input
-                  type="range"
-                  min={0}
-                  max={3}
-                  step={1}
-                  value={value}
-                  onChange={(e) => setDensity(t as Topping, Number(e.target.value))}
-                  className="w-full range"
-                />
-                <div className="mt-1 text-xs text-neutral-600">{labelFor(value)}</div>
+                <div className="flex gap-2">
+                  {TOPPING_AMOUNTS.map((amount) => (
+                    <button
+                      key={amount}
+                      onClick={() => setToppingAmount(t as Topping, amount)}
+                      className={`flex-1 px-3 py-2 rounded text-sm font-medium transition-colors ${
+                        currentAmount === amount
+                          ? 'bg-primary text-white'
+                          : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
+                      }`}
+                      title={TOPPING_DESCRIPTIONS[amount]}
+                    >
+                      {TOPPING_LABELS[amount]}
+                    </button>
+                  ))}
+                </div>
+                {currentAmount !== 'none' && (
+                  <div className="mt-2 text-xs text-neutral-600 italic">
+                    {TOPPING_DESCRIPTIONS[currentAmount]}
+                  </div>
+                )}
               </div>
             )
           })}
@@ -83,10 +91,6 @@ export default function BuilderStepper() {
       </Section>
     </div>
   )
-}
-
-function labelFor(v: number) {
-  return ['none', 'light', 'normal', 'extra'][v] || 'none'
 }
 
 function colorFor(t: string) {

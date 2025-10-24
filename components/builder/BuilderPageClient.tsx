@@ -28,7 +28,7 @@ function BuilderContent() {
     if (state.crust) progress += 15
     if (state.sauce) progress += 15
     if (state.cheese) progress += 15
-    const toppingCount = Object.values(state.toppingDensity).filter(d => d && d > 0).length
+    const toppingCount = Object.values(state.toppingAmounts).filter(amount => amount && amount !== 'none').length
     progress += Math.min(toppingCount * 5, 35)
     return Math.min(progress, 100)
   }

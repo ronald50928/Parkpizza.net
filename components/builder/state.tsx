@@ -6,13 +6,14 @@ import {
   defaultState,
   type BuilderState,
   type Topping,
-  densityToMultiplier,
+  type ToppingAmount,
+  toppingAmountToMultiplier,
 } from './types'
 
 type Ctx = {
   state: BuilderState
   set: (next: Partial<BuilderState>) => void
-  setDensity: (t: Topping, d: number) => void
+  setToppingAmount: (t: Topping, amount: ToppingAmount) => void
   price: number
   basePrice: number
 }
@@ -37,17 +38,17 @@ export function BuilderProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem('pp-builder-v2', JSON.stringify(state))
+      localStorage.setItem('pp-builder-v3', JSON.stringify(state))
       const params = new URLSearchParams()
       params.set('size', state.size)
       params.set('crust', state.crust)
       params.set('sauce', state.sauce)
       params.set('cheese', state.cheese)
-      const td = Object.entries(state.toppingDensity)
-        .filter(([, d]) => d && d > 0)
+      const toppings = Object.entries(state.toppingAmounts)
+        .filter(([, amount]) => amount && amount !== 'none')
         .map(([k, v]) => `${k}:${v}`)
         .join(',')
-      if (td) params.set('td', td)
+      if (toppings) params.set('toppings', toppings)
       if (state.promo) params.set('promo', state.promo)
       const qs = params.toString()
       const url = `${window.location.pathname}${qs ? '?' + qs : ''}`
@@ -57,19 +58,20 @@ export function BuilderProvider({ children }: { children: React.ReactNode }) {
 
   const basePrice = useMemo(() => BASE_PRICES[state.size], [state.size])
   const toppingsCount = useMemo(() =>
-    Object.values(state.toppingDensity as Record<string, number>).reduce((sum, d) => (d && d > 0 ? sum + 1 : sum), 0)
-  , [state.toppingDensity])
+    Object.values(state.toppingAmounts as Record<string, ToppingAmount>).reduce((sum, amount) => (amount && amount !== 'none' ? sum + 1 : sum), 0)
+  , [state.toppingAmounts])
   const price = useMemo(() => basePrice + toppingsCount * TOPPING_PRICE, [basePrice, toppingsCount])
 
   const set = (next: Partial<BuilderState>) => setState((s) => ({ ...s, ...next }))
-  const setDensity = (t: Topping, d: number) =>
-    setState((s) => ({ ...s, toppingDensity: { ...s.toppingDensity, [t]: Math.max(0, Math.min(3, Math.round(d))) as any } }))
+  const setToppingAmount = (t: Topping, amount: ToppingAmount) =>
+    setState((s) => ({ ...s, toppingAmounts: { ...s.toppingAmounts, [t]: amount } }))
 
-  const value: Ctx = { state, set, setDensity, price, basePrice }
+  const value: Ctx = { state, set, setToppingAmount, price, basePrice }
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>
 }
 
-export function toppingCountForSize(size: BuilderState['size'], t: Topping, density: number) {
+// Get visual topping count for canvas rendering
+export function toppingCountForSize(size: BuilderState['size'], t: Topping, amount: ToppingAmount) {
   const base: Record<Topping, number> = {
     Pepperoni: 14,
     Mushrooms: 16,
@@ -79,5 +81,5 @@ export function toppingCountForSize(size: BuilderState['size'], t: Topping, dens
     Olives: 16,
   }
   const sizeMul = size === 'Small' ? 0.8 : size === 'Large' ? 1.25 : 1
-  return Math.max(0, Math.round(base[t] * sizeMul * densityToMultiplier(density as any)))
+  return Math.max(0, Math.round(base[t] * sizeMul * toppingAmountToMultiplier(amount)))
 }

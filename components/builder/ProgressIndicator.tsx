@@ -28,7 +28,7 @@ export default function ProgressIndicator() {
     if (state.cheese) progress += 15
     
     // Toppings (35% - 5% per topping, up to 7 toppings)
-    const toppingCount = Object.values(state.toppingDensity).filter(d => d && d > 0).length
+    const toppingCount = Object.values(state.toppingAmounts).filter(amount => amount && amount !== 'none').length
     progress += Math.min(toppingCount * 5, 35)
     
     return Math.min(progress, 100)
