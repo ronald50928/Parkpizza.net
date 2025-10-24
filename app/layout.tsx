@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Libre_Baskerville, DM_Sans, Italiana } from 'next/font/google'
 import '@/styles/globals.css'
+import PerformanceMonitor from '@/components/PerformanceMonitor'
 
 const body = Inter({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-body' })
 const heading = Playfair_Display({ subsets: ['latin'], weight: ['600', '700', '800'], variable: '--font-heading' })
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${body.variable} ${heading.variable} ${subhead.variable} ${button.variable} ${decorative.variable} font-body bg-background text-text`}>
         <link rel="icon" href="/favicon.png" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <PerformanceMonitor />
         {children}
       </body>
     </html>

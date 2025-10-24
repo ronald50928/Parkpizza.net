@@ -245,6 +245,34 @@ export default function HomePage() {
               </Link>
             </motion.div>
           </motion.section>
+
+          {/* Pizza Tracker Feature */}
+          <motion.section
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            className="mt-16 rounded-2xl bg-gradient-to-br from-electric/10 to-electricPink/10 border border-electric/20 p-8 md:p-12 text-center shadow-lg"
+          >
+            <div className="text-6xl mb-4">📍</div>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+              Track Your Order in Real-Time
+            </h2>
+            <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-neutral-700 font-body">
+              Watch your pizza journey from prep to perfection! Our live tracker shows you exactly where your order is.
+            </p>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href="/tracker/demo"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-electric to-electricPink text-white px-8 py-4 rounded-lg font-bold text-lg hover:from-electricPink hover:to-electric transition-all shadow-lg"
+              >
+                Try Demo Tracker
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </motion.div>
+          </motion.section>
         </main>
 
         {/* Menu Section */}

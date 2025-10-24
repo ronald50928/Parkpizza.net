@@ -1,6 +1,7 @@
 'use client'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { fadeInUp } from '@/lib/animations'
 
@@ -59,11 +60,11 @@ export default function AboutPage() {
               <h3 className="font-subhead text-primary text-lg font-semibold">Our Logos</h3>
               <div className="space-y-3">
                 <figure className="flex items-center gap-3">
-                  <img src="/newlogo.png" alt="Current Park Pizza logo" className="w-auto max-h-16 object-contain" />
+                  <Image src="/newlogo.png" alt="Current Park Pizza logo" width={80} height={64} className="w-auto max-h-16 object-contain" />
                   <figcaption className="text-sm text-neutral-700">Current Logo</figcaption>
                 </figure>
                 <figure className="flex items-center gap-3">
-                  <img src="/parkpizza-logo.png" alt="Classic Park Pizza logo" className="w-auto max-h-16 object-contain" />
+                  <Image src="/parkpizza-logo.png" alt="Classic Park Pizza logo" width={80} height={64} className="w-auto max-h-16 object-contain" />
                   <figcaption className="text-sm text-neutral-700">Classic Logo</figcaption>
                 </figure>
               </div>
