@@ -21,6 +21,17 @@ export default function MenuPage() {
         className="pt-[64px] pb-12 bg-gradient-to-br from-primary to-primary/90 text-white"
       >
         <div className="mx-auto max-w-6xl px-4">
+          {/* Back Button */}
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors mb-6 group"
+          >
+            <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="font-semibold">Back to Home</span>
+          </Link>
+
           <div className="text-center">
             <div className="text-6xl mb-4">📖</div>
             <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
@@ -119,6 +130,19 @@ export default function MenuPage() {
             >
               📦 Order for Delivery
             </a>
+          </div>
+          
+          {/* Back to Home Link */}
+          <div className="mt-8">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-neutral-600 hover:text-primary transition-colors group"
+            >
+              <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              <span className="font-semibold">Back to Home</span>
+            </Link>
           </div>
         </div>
       </motion.div>
